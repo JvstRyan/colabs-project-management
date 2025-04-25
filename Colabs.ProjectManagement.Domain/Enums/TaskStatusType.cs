@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Colabs.ProjectManagement.Domain.Enums
 {
-    public enum TaskStatus
+    public enum TaskStatusType
     {
         Todo,
         InProgress,

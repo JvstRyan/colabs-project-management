@@ -1,5 +1,5 @@
 ﻿version: 1.0
-linter: jetbrains/qodana-dotnet:latest
+linter: jetbrains/qodana-dotnet-community:latest
 exclude:
   - path: "bin/"
   - path: "obj/"

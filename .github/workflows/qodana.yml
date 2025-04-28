@@ -16,6 +16,6 @@ jobs:
       - name: Run Qodana Scan
         uses: JetBrains/qodana-action@v2024.1
         with:
-          project-dir: .
+          args: --project-dir=.
           upload-result: true
-          pr-comment: true
+          post-pr-comment: true

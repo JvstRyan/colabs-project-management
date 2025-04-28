@@ -1,6 +1,4 @@
 ﻿using System.Security.Claims;
-using Colabs.ProjectManagement.Identity;
-using Colabs.ProjectManagement.Identity.Models;
 using Microsoft.AspNetCore.Identity;
 
 namespace Colabs.ProjectManagement.Api

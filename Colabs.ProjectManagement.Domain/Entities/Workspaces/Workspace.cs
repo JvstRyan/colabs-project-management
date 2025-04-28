@@ -15,7 +15,7 @@ namespace Colabs.ProjectManagement.Domain.Entities.Workspaces
         public Guid WorkspaceId { get; set; }
         public string Name { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
-        public int OwnerId { get; set; }
+        public Guid OwnerId { get; set; }
         public string BannerUrl { get; set; } = string.Empty;
 
         // Navigation properties

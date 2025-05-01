@@ -16,7 +16,7 @@ namespace Colabs.ProjectManagement.Domain.Entities.Documents
 
         //Navigation properties 
         public Workspace Workspace { get; private set; } = null!;
-        public DocumentFolder ParentFolder { get; private set; }
+        public DocumentFolder? ParentFolder { get; private set; }
         public ICollection<DocumentFolder> SubFolders { get; private set; } = new List<DocumentFolder>();
         public ICollection<Document> Documents { get; private set; } = new List<Document>();
 

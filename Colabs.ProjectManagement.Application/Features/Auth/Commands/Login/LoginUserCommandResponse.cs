@@ -1,15 +1,13 @@
 ﻿using Colabs.ProjectManagement.Application.Responses;
 
-namespace Colabs.ProjectManagement.Application.Features.Auth.Commands.Register
+namespace Colabs.ProjectManagement.Application.Features.Auth.Commands.Login
 {
-    public class RegisterUserCommandResponse : BaseResponse
+    public class LoginUserCommandResponse : BaseResponse
     {
-        public RegisterUserCommandResponse() : base()
+        public LoginUserCommandResponse() : base()
         {
         }
-        
         public string Token { get; set; } = string.Empty;
         public Guid UserId { get; set; } = Guid.Empty;
     }
-    
 }

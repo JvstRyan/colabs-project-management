@@ -9,7 +9,7 @@ namespace Colabs.ProjectManagement.Domain.Entities.Chat
     public class ChatRoomMember
     {
         public Guid ChatRoomMemberId { get; set; }
-        public Guid ChatRoomId { get; }
+        public Guid ChatRoomId { get; set; }
         public Guid UserId { get; set; }
         public DateTime JoinedAt { get; set; }
 

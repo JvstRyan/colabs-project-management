@@ -30,15 +30,15 @@ namespace Colabs.ProjectManagement.Application.Features.Auth.Commands.Register
                 .Matches("[^a-zA-Z0-9]").WithMessage("Password must contain at least one special character");
         }
 
-        private async Task<bool> BeUniqueEmail(string email, CancellationToken cancellationToken)
+        private async Task<bool> BeUniqueEmail(string email, CancellationToken cancellationToken = default)
         {
-            var existingUser = await _userRepository.GetUserByEmailAsync(email);
+            var existingUser = await _userRepository.GetUserByEmailAsync(email, cancellationToken);
             return existingUser == null;
         }
         
-        private async Task<bool> BeUniqueUsername(string username, CancellationToken cancellationToken)
+        private async Task<bool> BeUniqueUsername(string username, CancellationToken cancellationToken = default)
         {
-            var existingUser = await _userRepository.GetUserByUsernameAsync(username);
+            var existingUser = await _userRepository.GetUserByUsernameAsync(username, cancellationToken);
             return existingUser == null;
         }
     }

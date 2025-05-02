@@ -32,7 +32,7 @@ namespace Colabs.ProjectManagement.Application.Features.Auth.Commands.Login
                 };
             }
             
-            var user = await _userRepository.GetUserByEmailAsync(request.Email);
+            var user = await _userRepository.GetUserByEmailAsync(request.Email, cancellationToken);
             if (user == null || !_passwordUtils.VerifyPassword(request.Password, user.PasswordHash))
             {
                 return new LoginUserCommandResponse
@@ -47,7 +47,7 @@ namespace Colabs.ProjectManagement.Application.Features.Auth.Commands.Login
             return new LoginUserCommandResponse
             {
                 Success = true,
-                Message = "Login succesfull",
+                Message = "Login successful",
                 Token = token,
                 UserId = user.UserId
             };

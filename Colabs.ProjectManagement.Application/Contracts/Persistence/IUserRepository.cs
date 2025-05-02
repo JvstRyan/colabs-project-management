@@ -4,7 +4,7 @@ namespace Colabs.ProjectManagement.Application.Contracts.Persistence
 {
     public interface IUserRepository : IGenericRepository<User>
     {
-        Task<User> GetUserByEmailAsync(string email);
-        Task<User> GetUserByUsernameAsync(string username);
+        Task<User> GetUserByEmailAsync(string email, CancellationToken cancellationToken = default);
+        Task<User> GetUserByUsernameAsync(string username, CancellationToken cancellationToken = default);
     }
 }

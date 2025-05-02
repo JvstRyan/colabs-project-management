@@ -24,10 +24,10 @@ namespace Colabs.ProjectManagement.Domain.Entities.TaskManagement
         public DateTime? Deadline { get; set; }
 
         //Navigation properties
-        public Workspace Workspace { get; private set; } = null!;
-        public Sprint? Sprint { get; private set; }
+        public Workspace Workspace { get; set; } = null!;
+        public Sprint? Sprint { get; set; }
         public User Creator { get; private set; } = null!;
-        public User? Assignee { get; private set; }
-        public ICollection<TaskComment> Comments { get; private set; } = new List<TaskComment>();
+        public User? Assignee { get; set; }
+        public ICollection<TaskComment> Comments { get; set; } = new List<TaskComment>();
     }
 }

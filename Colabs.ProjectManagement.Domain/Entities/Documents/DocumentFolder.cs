@@ -12,6 +12,7 @@ namespace Colabs.ProjectManagement.Domain.Entities.Documents
     {
         public Guid DocumentFolderId { get; set; }
         public Guid WorkspaceId { get; set; }
+        public Guid? ParentFolderId { get; set; }
         public string Name { get; set; } = string.Empty;
 
         //Navigation properties 

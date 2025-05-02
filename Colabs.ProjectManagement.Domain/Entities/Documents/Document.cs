@@ -13,12 +13,15 @@ namespace Colabs.ProjectManagement.Domain.Entities.Documents
     {
         public Guid DocumentId { get; set; }
         public Guid? DocumentFolderId { get; set; }
+        public Guid WorkspaceId { get; set; } 
+        public Guid CreatedByUserId { get; set; }
         public string Title { get; set; } = string.Empty;
         public string Content { get; set; } = string.Empty;
 
         //Navigation properties
         public Workspace Workspace { get; private set; } = null!;
         public DocumentFolder? DocumentFolder { get; private set; } 
+        public User CreatedBy {get; private set;} = null!;
 
     }
 }

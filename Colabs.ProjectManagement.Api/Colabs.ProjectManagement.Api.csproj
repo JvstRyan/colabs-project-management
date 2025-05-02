@@ -15,4 +15,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="8.1.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Colabs.ProjectManagement.Infrastructure\Colabs.ProjectManagement.Infrastructure.csproj" />
+    <ProjectReference Include="..\Colabs.ProjectManagement.Persistence\Colabs.ProjectManagement.Persistence.csproj" />
+  </ItemGroup>
+
 </Project>

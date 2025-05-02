@@ -10,7 +10,8 @@ namespace Colabs.ProjectManagement.Domain.Enums
     {
         Pending,
         Accepted,
-        Declined
+        Declined, 
+        Cancelled
           
     }
 }

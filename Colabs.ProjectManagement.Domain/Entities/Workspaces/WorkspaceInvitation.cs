@@ -10,6 +10,7 @@ namespace Colabs.ProjectManagement.Domain.Entities.Workspaces
 {
     public class WorkspaceInvitation : AuditableEntity
     {
+        public Guid WorkspaceInvitationId { get; set; }
         public Guid WorkspaceId { get; set; }
         public Guid InviterId { get; set; }
         public Guid InviteeId { get; set; }

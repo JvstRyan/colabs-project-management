@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Colabs.ProjectManagement.Ap
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Colabs.ProjectManagement.Persistence", "Colabs.ProjectManagement.Persistence\Colabs.ProjectManagement.Persistence.csproj", "{032B3385-AF30-4C81-AD1D-F0C845F881A5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Colabs.ProjectManagement.Infrastructure", "Colabs.ProjectManagement.Infrastructure\Colabs.ProjectManagement.Infrastructure.csproj", "{3B5BA4D9-BBB0-45F9-9276-5D7B8B3B102E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{032B3385-AF30-4C81-AD1D-F0C845F881A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{032B3385-AF30-4C81-AD1D-F0C845F881A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{032B3385-AF30-4C81-AD1D-F0C845F881A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B5BA4D9-BBB0-45F9-9276-5D7B8B3B102E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B5BA4D9-BBB0-45F9-9276-5D7B8B3B102E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B5BA4D9-BBB0-45F9-9276-5D7B8B3B102E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B5BA4D9-BBB0-45F9-9276-5D7B8B3B102E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -58,6 +64,7 @@ Global
 		{237C5657-29C8-4BD5-8D25-EFD5443C3BFF} = {E8DD0AFF-66FA-47E4-AAB5-03AD21E68D71}
 		{4B4557AA-D2C1-4BB3-97A4-013D935E9B51} = {5A8946DE-7F55-4890-9EA9-1895F9F8D08B}
 		{032B3385-AF30-4C81-AD1D-F0C845F881A5} = {D11C4AAA-5BDA-4699-852A-A53BD93ED1E5}
+		{3B5BA4D9-BBB0-45F9-9276-5D7B8B3B102E} = {D11C4AAA-5BDA-4699-852A-A53BD93ED1E5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E3470B9E-53FF-4595-805B-1F2B1B751727}

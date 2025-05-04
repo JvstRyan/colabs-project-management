@@ -10,9 +10,9 @@ namespace Colabs.ProjectManagement.Domain.Entities.Documents
 {
     public class DocumentFolder : AuditableEntity
     {
-        public Guid DocumentFolderId { get; set; }
-        public Guid WorkspaceId { get; set; }
-        public Guid? ParentFolderId { get; set; }
+        public string DocumentFolderId { get; set; } = string.Empty;
+        public string WorkspaceId { get; set; } = string.Empty;
+        public string? ParentFolderId { get; set; }
         public string Name { get; set; } = string.Empty;
 
         //Navigation properties 

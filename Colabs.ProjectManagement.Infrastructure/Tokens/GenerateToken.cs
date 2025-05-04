@@ -21,7 +21,7 @@ namespace Colabs.ProjectManagement.Infrastructure.Tokens
         {
             var claims = new List<Claim>
             {
-                new Claim(JwtRegisteredClaimNames.Sub,
+                new Claim(ClaimTypes.NameIdentifier,
                     user.UserId.ToString()),
                 new Claim(JwtRegisteredClaimNames.Email,
                     user.Email),

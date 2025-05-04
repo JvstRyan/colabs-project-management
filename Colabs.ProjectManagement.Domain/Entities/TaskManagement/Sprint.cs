@@ -11,8 +11,8 @@ namespace Colabs.ProjectManagement.Domain.Entities.TaskManagement
 {
     public class Sprint : AuditableEntity
     {
-        public Guid SprintId { get; set; }
-        public Guid WorkspaceId { get; set; }
+        public string SprintId { get; set; } = string.Empty;
+        public string WorkspaceId { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }

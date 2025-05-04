@@ -11,10 +11,10 @@ namespace Colabs.ProjectManagement.Domain.Entities.Documents
 {
     public class Document : AuditableEntity
     {
-        public Guid DocumentId { get; set; }
-        public Guid? DocumentFolderId { get; set; }
-        public Guid WorkspaceId { get; set; } 
-        public Guid CreatedByUserId { get; set; }
+        public string DocumentId { get; set; } = string.Empty;
+        public string? DocumentFolderId { get; set; } 
+        public string WorkspaceId { get; set; }  = string.Empty;
+        public string CreatedByUserId { get; set; } = string.Empty;
         public string Title { get; set; } = string.Empty;
         public string Content { get; set; } = string.Empty;
 

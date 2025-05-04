@@ -12,7 +12,7 @@ namespace Colabs.ProjectManagement.Persistence.Repositories
             _dbContext = dbContext;
         }
 
-        public async Task<T> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
+        public async Task<T> GetByIdAsync(string id, CancellationToken cancellationToken = default)
         {
            return await _dbContext.Set<T>().FindAsync(id, cancellationToken);
         }
@@ -35,7 +35,7 @@ namespace Colabs.ProjectManagement.Persistence.Repositories
            await _dbContext.SaveChangesAsync(cancellationToken);
         }
 
-        public async Task DeleteAsync(Guid id, CancellationToken cancellationToken = default)
+        public async Task DeleteAsync(string id, CancellationToken cancellationToken = default)
         {
            var entity = await GetByIdAsync(id, cancellationToken);
            if (entity != null)

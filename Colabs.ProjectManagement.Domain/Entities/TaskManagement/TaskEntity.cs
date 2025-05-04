@@ -11,11 +11,11 @@ namespace Colabs.ProjectManagement.Domain.Entities.TaskManagement
 {
     public class TaskEntity : AuditableEntity
     {
-        public Guid TaskId { get; set; }
-        public Guid WorkspaceId { get; set; }
-        public Guid? SprintId { get; set; }
-        public Guid CreatorId { get; set; }
-        public Guid? AssigneeId { get; set; }
+        public string TaskId { get; set; } = string.Empty;
+        public string WorkspaceId { get; set; } = string.Empty;
+        public string? SprintId { get; set; }
+        public string CreatorId { get; set; } = string.Empty;
+        public string? AssigneeId { get; set; }
         public string Title { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
         public TaskType TaskType { get; set; }

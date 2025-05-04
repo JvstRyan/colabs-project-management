@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Colabs.ProjectManagement.Api.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/users")]
     public class UserController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -17,15 +17,15 @@ namespace Colabs.ProjectManagement.Api.Controllers
             _mediator = mediator;
         }
 
-        [HttpGet("{id}", Name = "GetUserById")]
-        public async Task<ActionResult<GetUserByIdResponse>> GetUserById(Guid id)
+        [HttpGet("details/{id}", Name = "GetUserById")]
+        public async Task<ActionResult<GetUserByIdResponse>> GetUserById(string id)
         {
             var getUserByIdQuery = new GetUserByIdQuery() {UserId = id};
             var result = await _mediator.Send(getUserByIdQuery);
             return Ok(result);
         }
 
-        [HttpPost("register", Name = "RegisterUser")]
+        [HttpPost("auth/register", Name = "RegisterUser")]
         public async Task<ActionResult<RegisterUserCommandResponse>> RegisterUser(
             [FromBody] RegisterUserCommand registerUserCommand)
         {
@@ -33,7 +33,7 @@ namespace Colabs.ProjectManagement.Api.Controllers
           return Ok(response);
         }
 
-        [HttpPost("login", Name = "LoginUser")]
+        [HttpPost("auth/login", Name = "LoginUser")]
         public async Task<ActionResult<LoginUserCommandResponse>> LoginUser([FromBody] LoginUserCommand loginUserCommand)
         {
             var response = await _mediator.Send(loginUserCommand);

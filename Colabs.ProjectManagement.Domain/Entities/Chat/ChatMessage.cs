@@ -9,9 +9,9 @@ namespace Colabs.ProjectManagement.Domain.Entities.Chat
 {
     public class ChatMessage : AuditableEntity
     {
-        public Guid ChatMessageId { get; set; }
-        public Guid ChatRoomId { get; set; }
-        public Guid UserId { get; set; }
+        public string ChatMessageId { get; set; } = string.Empty;
+        public string ChatRoomId { get; set; } = string.Empty;
+        public string UserId { get; set; } = string.Empty;
         public string Content { get; set; } = string.Empty;
 
         //Navigation properties

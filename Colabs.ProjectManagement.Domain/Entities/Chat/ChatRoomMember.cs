@@ -8,9 +8,9 @@ namespace Colabs.ProjectManagement.Domain.Entities.Chat
 {
     public class ChatRoomMember
     {
-        public Guid ChatRoomMemberId { get; set; }
-        public Guid ChatRoomId { get; set; }
-        public Guid UserId { get; set; }
+        public string ChatRoomMemberId { get; set; } = string.Empty;
+        public string ChatRoomId { get; set; } = string.Empty;
+        public string UserId { get; set; } = string.Empty;
         public DateTime JoinedAt { get; set; }
 
         //Navigation properties

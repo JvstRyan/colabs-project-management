@@ -9,10 +9,10 @@ namespace Colabs.ProjectManagement.Domain.Entities.TaskManagement
 {
     public class TaskComment : AuditableEntity
     {
-        public Guid TaskCommentId { get; set; }
-        public Guid TaskId { get; set; }
-        public Guid UserId { get; set; }
-        public string Content { get; set; }
+        public string TaskCommentId { get; set; } = string.Empty;
+        public string TaskId { get; set; } = string.Empty;
+        public string UserId { get; set; } = string.Empty;
+        public string Content { get; set; } = string.Empty;
 
         //Navigation properties
         public TaskEntity Task { get; private set; } = null!;

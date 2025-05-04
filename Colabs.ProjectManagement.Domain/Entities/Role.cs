@@ -9,8 +9,8 @@ namespace Colabs.ProjectManagement.Domain.Entities
 {
     public class Role 
     {
-        public Guid RoleId { get; set; }
-        public Guid WorkspaceId { get; set; }
+        public string RoleId { get; set; }
+        public string WorkspaceId { get; set; }
         public string Name { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
         public bool CanManageUsers { get; set; }

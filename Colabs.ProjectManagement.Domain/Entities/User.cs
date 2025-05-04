@@ -13,7 +13,7 @@ namespace Colabs.ProjectManagement.Domain.Entities
 {
     public class User : AuditableEntity
     {   
-        public Guid UserId { get; set; }
+        public string UserId { get; set; }
         public string Username { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
         public string PasswordHash {get; set; } = string.Empty;

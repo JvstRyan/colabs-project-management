@@ -33,7 +33,7 @@ namespace Colabs.ProjectManagement.Application.Features.Auth.Commands.Register
                };
             }
             
-            var userId = Guid.NewGuid();
+            var userId = Guid.NewGuid().ToString();
             var user = new User
             {
                 UserId = userId,

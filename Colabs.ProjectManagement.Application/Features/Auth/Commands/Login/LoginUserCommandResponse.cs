@@ -8,6 +8,6 @@ namespace Colabs.ProjectManagement.Application.Features.Auth.Commands.Login
         {
         }
         public string Token { get; set; } = string.Empty;
-        public Guid UserId { get; set; } = Guid.Empty;
+        public string UserId { get; set; } = string.Empty;
     }
 }

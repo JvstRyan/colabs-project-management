@@ -8,9 +8,9 @@ namespace Colabs.ProjectManagement.Domain.Entities.Workspaces
 {
     public class WorkspaceMember
     {
-        public Guid WorkspaceId { get; set; }
-        public Guid UserId { get; set; }
-        public Guid RoleId { get; set; }
+        public string WorkspaceId { get; set; } = string.Empty;
+        public string UserId { get; set; } = string.Empty;
+        public string RoleId { get; set; } = string.Empty;
         public DateTime JoinedAt { get; set; }
 
         //Navigation properties

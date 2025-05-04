@@ -12,11 +12,11 @@ namespace Colabs.ProjectManagement.Domain.Entities.Workspaces
 {
     public class Workspace : AuditableEntity
     {
-        public Guid WorkspaceId { get; set; }
+        public string WorkspaceId { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
-        public string Description { get; set; } = string.Empty;
-        public Guid OwnerId { get; set; }
-        public string BannerUrl { get; set; } = string.Empty;
+        public string? Description { get; set; } = string.Empty;
+        public string OwnerId { get; set; } = string.Empty;
+        public string? BannerUrl { get; set; } = string.Empty;
 
         // Navigation properties
         public User Owner { get; private set; } = null!;
@@ -28,7 +28,6 @@ namespace Colabs.ProjectManagement.Domain.Entities.Workspaces
         public ICollection<DocumentFolder> DocumentFolders { get; private set; } = new List<DocumentFolder>();
         public ICollection<Document> Documents { get; private set; } = new List<Document>();
         public ICollection<WorkspaceInvitation> Invitations { get; private set; } = new List<WorkspaceInvitation>();
-
-
+        
     }
 }

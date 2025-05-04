@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using Colabs.ProjectManagement.Application.Contracts;
 using Colabs.ProjectManagement.Domain.Common;
 using Colabs.ProjectManagement.Domain.Entities;
 using Colabs.ProjectManagement.Domain.Entities.Chat;
@@ -11,9 +12,15 @@ namespace Colabs.ProjectManagement.Persistence
 {
     public class ColabsDbContext : DbContext
     {
+        private readonly ICurrentLoggedInUserService? _currentLoggedInUser;
         public ColabsDbContext(DbContextOptions<ColabsDbContext> options)
             : base(options)
         {
+        }
+
+        public ColabsDbContext(DbContextOptions<ColabsDbContext> options, ICurrentLoggedInUserService currentLoggedInUser) : base(options)
+        {
+            _currentLoggedInUser = currentLoggedInUser;
         }
         
         public DbSet<User> Users { get; set; }
@@ -55,15 +62,13 @@ namespace Colabs.ProjectManagement.Persistence
                 switch (entry.State)
                 {
                     case EntityState.Added:
-                        // entry.Entity.CreatedBy = userId;
                         entry.Entity.CreatedDate = now;
-                        // entry.Entity.LastModifiedBy = userId;
-                        entry.Entity.LastModifiedDate = now;
+                        entry.Entity.CreatedBy = _currentLoggedInUser?.UserId;
                         break;
 
                     case EntityState.Modified:
-                        // entry.Entity.LastModifiedBy = userId;
                         entry.Entity.LastModifiedDate = now;
+                        entry.Entity.LastModifiedBy = _currentLoggedInUser?.UserId;;
                         break;
                 
                 }

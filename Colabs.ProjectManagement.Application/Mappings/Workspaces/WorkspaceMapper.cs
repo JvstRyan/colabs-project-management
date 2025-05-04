@@ -1,4 +1,5 @@
 ﻿using Colabs.ProjectManagement.Application.Features.Workspaces.Commands.CreateWorkspace;
+using Colabs.ProjectManagement.Application.Features.Workspaces.Queries.GetAllWorkspaces;
 using Colabs.ProjectManagement.Domain.Entities.Workspaces;
 
 namespace Colabs.ProjectManagement.Application.Mappings
@@ -30,6 +31,30 @@ namespace Colabs.ProjectManagement.Application.Mappings
                     WorkspaceId = workspace.WorkspaceId,
                     Name = workspace.Name
                 }
+            };
+        }
+
+        public static GetAllWorkspaceDto ToGetAllWorkspaceDto(this Workspace workspace)
+        {
+            return new GetAllWorkspaceDto
+            {
+                WorkspaceId = workspace.WorkspaceId,
+                Name = workspace.Name
+            };
+        }
+
+        public static List<GetAllWorkspaceDto> ToGetAllWorkspaceDtoList(this IEnumerable<Workspace> workspaces)
+        {
+            return workspaces.Select(w => w.ToGetAllWorkspaceDto()).ToList();
+        }
+
+        public static GetAllWorkspacesQueryResponse ToGetAllWorkspaces(this List<GetAllWorkspaceDto> workspaces)
+        {
+            return new GetAllWorkspacesQueryResponse
+            {
+                Success = true,
+                Message = "Workspaces retrieved successfully",
+                Workspaces = workspaces
             };
         }
     }

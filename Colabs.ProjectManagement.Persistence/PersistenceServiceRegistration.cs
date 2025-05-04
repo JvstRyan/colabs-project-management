@@ -17,6 +17,7 @@ namespace Colabs.ProjectManagement.Persistence
             services.AddScoped(typeof(IGenericRepository<>), typeof(BaseRepository<>));
             
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IWorkspaceRepository, WorkspaceRepository>();
             
             return services;
         }

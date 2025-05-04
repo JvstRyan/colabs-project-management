@@ -1,4 +1,5 @@
 ﻿using Colabs.ProjectManagement.Application.Features.Workspaces.Commands.CreateWorkspace;
+using Colabs.ProjectManagement.Application.Features.Workspaces.Queries.GetAllWorkspaces;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,6 +14,14 @@ namespace Colabs.ProjectManagement.Api.Controllers
         public WorkspaceController(IMediator mediator)
         {
             _mediator = mediator;
+        }
+
+        [HttpGet(Name = "GetAllWorkspacesForUser")]
+        public async Task<ActionResult<GetAllWorkspacesQueryResponse>> GetAll()
+        {
+            var getAllWorkspacesQuery = new GetAllWorkspacesQuery();
+            var result = await _mediator.Send(getAllWorkspacesQuery);
+            return Ok(result);
         }
         
         [HttpPost(Name = "CreateWorkspace")]

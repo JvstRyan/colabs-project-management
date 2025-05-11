@@ -16,6 +16,7 @@ namespace Colabs.ProjectManagement.Domain.Entities.Workspaces
         public string Name { get; set; } = string.Empty;
         public string? Description { get; set; } = string.Empty;
         public string OwnerId { get; set; } = string.Empty;
+        public string? ProfileUrl {get; set;} = string.Empty;
         public string? BannerUrl { get; set; } = string.Empty;
 
         // Navigation properties

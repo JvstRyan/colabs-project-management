@@ -6,6 +6,7 @@ namespace Colabs.ProjectManagement.Application.Features.Workspaces.Commands.Crea
     {
         public string Name { get; set; } = string.Empty;
         public string? Description { get; set; } = string.Empty;
+        public string? ProfileUrl { get; set; } = string.Empty;
         public string? BannerUrl { get; set; } = string.Empty;
         
     }

@@ -15,6 +15,12 @@ namespace Colabs.ProjectManagement.Application.Features.Workspaces.Commands.Crea
                 .MaximumLength(500).WithMessage("Description must not exceed 500 characters")
                 .When(x => !string.IsNullOrEmpty(x.Description));
             
+            RuleFor(x => x.ProfileUrl)
+                .MaximumLength(2000).WithMessage("Profile URL must not exceed 2000 characters")
+                .When(x => !string.IsNullOrEmpty(x.ProfileUrl))
+                .Must(BeValidUrl).WithMessage("Invalid URL format for Profile URL")
+                .When(x => !string.IsNullOrEmpty(x.ProfileUrl));
+            
             RuleFor(x => x.BannerUrl)
                 .MaximumLength(2000).WithMessage("Banner URL must not exceed 2000 characters")
                 .When(x => !string.IsNullOrEmpty(x.BannerUrl))

@@ -15,6 +15,7 @@ namespace Colabs.ProjectManagement.Application.Mappings
                 Name = command.Name,
                 Description = command.Description,
                 OwnerId = ownerId,
+                ProfileUrl = command.ProfileUrl,
                 BannerUrl = command.BannerUrl
             };
         }

@@ -27,6 +27,7 @@ namespace Colabs.ProjectManagement.Application.Features.Auth.Commands.Login
                 return new LoginUserCommandResponse
                 {
                     Success = false,
+                    StatusCode = 400,
                     Message = "Email or password is incorrect",
                     ValidationErrors = validationResult.Errors.Select(e => e.ErrorMessage).ToList()
                 };
@@ -38,6 +39,7 @@ namespace Colabs.ProjectManagement.Application.Features.Auth.Commands.Login
                 return new LoginUserCommandResponse
                 {
                     Success = false,
+                    StatusCode = 400,
                     Message = "Email or password is incorrect"
                 };
             }

@@ -28,6 +28,7 @@ namespace Colabs.ProjectManagement.Application.Features.Auth.Commands.Register
                return new RegisterUserCommandResponse
                {
                    Success = false,
+                   StatusCode = 400,
                    Message = "Validation failed",
                    ValidationErrors = validationResult.Errors.Select(e => e.ErrorMessage).ToList()
                };

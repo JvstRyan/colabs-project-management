@@ -20,4 +20,8 @@
     <ProjectReference Include="..\Colabs.ProjectManagement.Persistence\Colabs.ProjectManagement.Persistence.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Middleware\" />
+  </ItemGroup>
+
 </Project>

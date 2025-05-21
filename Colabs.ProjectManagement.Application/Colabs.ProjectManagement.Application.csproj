@@ -13,9 +13,12 @@
   <ItemGroup>
     <PackageReference Include="FluentValidation" Version="11.11.0" />
     <PackageReference Include="MediatR" Version="12.5.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="6.0.0-preview.4.21253.5" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="8.0.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Features\Sprints\Queries\" />
     <Folder Include="Features\Workspaces\Commands\UpdateWorkspace\" />
   </ItemGroup>
 

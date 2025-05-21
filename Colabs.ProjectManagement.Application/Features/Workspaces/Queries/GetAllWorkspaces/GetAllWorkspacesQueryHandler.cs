@@ -28,6 +28,7 @@ namespace Colabs.ProjectManagement.Application.Features.Workspaces.Queries.GetAl
                 return new GetAllWorkspacesQueryResponse
                 {
                     Success = true,
+                    StatusCode = 404,
                     Message = "No workspaces found for the current user",
                     Workspaces = new List<GetAllWorkspaceDto>()
                 };

@@ -9,6 +9,7 @@ namespace Colabs.ProjectManagement.Application.Contracts.Persistence
 {
     public interface ISprintRepository : IGenericRepository<Sprint>
     {
-        Task<Sprint> CreateSprintAsync(Guid workspaceId, Sprint sprint);
+      
     }
 }
+ 

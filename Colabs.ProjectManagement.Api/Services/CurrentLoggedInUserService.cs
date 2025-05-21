@@ -17,8 +17,10 @@ namespace Colabs.ProjectManagement.Api.Services
         {
             get
             {
-                return _contextAccessor.HttpContext?.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? string.Empty;
+              return _contextAccessor.HttpContext?.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                
             }
         }
+
     }
 }

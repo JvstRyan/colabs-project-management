@@ -51,6 +51,16 @@ namespace Colabs.ProjectManagement.Api
                 });
             });
             
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowFrontend", policy =>
+                {
+                    policy.WithOrigins("http://localhost:5174") 
+                        .AllowAnyMethod()
+                        .AllowAnyHeader();
+                });
+            });
+            
             return builder.Build();
         }
 
@@ -63,8 +73,9 @@ namespace Colabs.ProjectManagement.Api
                 app.UseSwaggerUI();
             }
             
-            app.UseHttpsRedirection();
+            // app.UseHttpsRedirection();
             app.UseRouting();
+            app.UseCors("AllowFrontend");
             
             app.UseAuthentication();
             app.UseAuthorization();

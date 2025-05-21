@@ -26,6 +26,7 @@ namespace Colabs.ProjectManagement.Application.Features.Workspaces.Commands.Crea
                return new CreateWorkspaceCommandResponse
                {
                    Success = false,
+                   StatusCode = 400,
                    Message = "Provided details are invalid for workspace creation",
                    ValidationErrors = validationResult.Errors.Select(e => e.ErrorMessage).ToList()
                    

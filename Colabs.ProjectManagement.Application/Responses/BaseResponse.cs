@@ -5,12 +5,14 @@
         public BaseResponse()
         {
             Success = true;
+            StatusCode = 200;
         }
 
-        public BaseResponse(string message)
+        public BaseResponse(string message, int statusCode = 200)
         {
-            Success = true;
+            Success = statusCode >= 200 && statusCode < 300;
             Message = message;
+            StatusCode = statusCode;
         }
 
         public BaseResponse(string message, bool success)
@@ -22,5 +24,6 @@
         public bool Success { get; set; }
         public string Message { get; set; } = string.Empty;
         public List<string>? ValidationErrors { get; set; }
+        public int StatusCode {get; set;}
     }
 }

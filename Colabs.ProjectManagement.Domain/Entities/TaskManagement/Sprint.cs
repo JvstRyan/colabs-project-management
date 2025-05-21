@@ -14,9 +14,9 @@ namespace Colabs.ProjectManagement.Domain.Entities.TaskManagement
         public string SprintId { get; set; } = string.Empty;
         public string WorkspaceId { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
-        public string Description { get; set; } = string.Empty;
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
+        public string? Description { get; set; } = string.Empty;
         public SprintStatus Status { get; set; }
 
         //Navigation properties

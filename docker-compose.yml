@@ -1,0 +1,39 @@
+version: '3.8'
+services:
+    azurite:
+        image: mcr.microsoft.com/azure-storage/azurite
+        container_name: colabs-azurite
+        restart: always
+        ports:
+            - "10000:10000" # Blob service
+        volumes:
+            - azurite-data:/data
+        command: "azurite --silent --location /data --debug /data/debug.log --blobHost 0.0.0.0"
+        networks:
+            - colabs_network
+            
+    postgres:
+        image: postgres:latest
+        container_name: colabs-postgres
+        restart: always
+        environment:
+            POSTGRES_USER: colabs-user
+            POSTGRES_PASSWORD: colabs-password
+            POSTGRES_DB: colabs-db
+        ports:
+            - "5444:5432"
+        volumes:
+            - postgres_data:/var/lib/postgresql/data
+        
+        networks:
+            - colabs_network
+
+volumes:
+    postgres_data:    
+        name: colabs_project_data
+    azurite-data:
+        name: colabs_azurite_data
+        
+networks:
+    colabs_network:
+        name: colabs_network

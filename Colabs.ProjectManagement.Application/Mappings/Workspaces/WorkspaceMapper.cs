@@ -40,7 +40,8 @@ namespace Colabs.ProjectManagement.Application.Mappings
             return new GetAllWorkspaceDto
             {
                 WorkspaceId = workspace.WorkspaceId,
-                Name = workspace.Name
+                Name = workspace.Name,
+                ProfileUrl = workspace.ProfileUrl
             };
         }
 

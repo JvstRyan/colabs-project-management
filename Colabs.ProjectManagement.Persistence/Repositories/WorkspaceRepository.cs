@@ -23,6 +23,13 @@ namespace Colabs.ProjectManagement.Persistence.Repositories
             
             return workspaces;
         }
-       
+
+        public async Task<Workspace> GetWorkspaceMembersAsync(string workspaceId, CancellationToken cancellationToken = default)
+        {
+           return await _dbContext.Workspaces.Include(w => w.Members)
+               .FirstOrDefaultAsync(w => w.WorkspaceId == workspaceId, cancellationToken);
+        }
+
+
     }
 }

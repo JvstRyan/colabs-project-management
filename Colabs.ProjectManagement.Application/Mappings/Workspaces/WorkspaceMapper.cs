@@ -1,5 +1,6 @@
 ﻿using Colabs.ProjectManagement.Application.Features.Workspaces.Commands.CreateWorkspace;
 using Colabs.ProjectManagement.Application.Features.Workspaces.Queries.GetAllWorkspaces;
+using Colabs.ProjectManagement.Application.Features.Workspaces.Queries.GetWorkspace;
 using Colabs.ProjectManagement.Domain.Entities.Workspaces;
 
 namespace Colabs.ProjectManagement.Application.Mappings
@@ -17,6 +18,18 @@ namespace Colabs.ProjectManagement.Application.Mappings
                 OwnerId = ownerId,
                 ProfileUrl = command.ProfileUrl,
                 BannerUrl = command.BannerUrl
+            };
+        }
+
+        public static GetWorkspaceQueryDto ToWorkspaceDto(this Workspace workspace)
+        {
+            return new GetWorkspaceQueryDto
+            {
+                Name = workspace.Name,
+                Description = workspace.Description,
+                OwnerId = workspace.OwnerId,
+                ProfileUrl = workspace.ProfileUrl,
+                BannerUrl = workspace.BannerUrl
             };
         }
 

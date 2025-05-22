@@ -1,6 +1,7 @@
 ﻿using Colabs.ProjectManagement.Application.Features.Workspaces.Commands.CreateWorkspace;
 using Colabs.ProjectManagement.Application.Features.Workspaces.Commands.UploadWorkpsaceProfilePicture;
 using Colabs.ProjectManagement.Application.Features.Workspaces.Queries.GetAllWorkspaces;
+using Colabs.ProjectManagement.Application.Features.Workspaces.Queries.GetWorkspace;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -25,6 +26,19 @@ namespace Colabs.ProjectManagement.Api.Controllers
             var getAllWorkspacesQuery = new GetAllWorkspacesQuery();
             var result = await _mediator.Send(getAllWorkspacesQuery);
             return StatusCode(result.StatusCode, result);
+        }
+
+        [Authorize]
+        [HttpGet("{id}", Name = "GetWorkspaceById")]
+        public async Task<ActionResult<GetWorkspaceQueryResponse>> GetWorkspaceById(string id)
+        {
+            var getWorkspaceQuery = new GetWorkspaceQuery
+            {
+                WorkspaceId = id
+            };
+            
+            var response = await _mediator.Send(getWorkspaceQuery);
+            return StatusCode(response.StatusCode, response);
         }
         
         [Authorize]

@@ -22,3 +22,4 @@ namespace Colabs.ProjectManagement.Domain.Entities.Workspaces
         public User Invitee { get; private set; } = null!;
     }
 }
+

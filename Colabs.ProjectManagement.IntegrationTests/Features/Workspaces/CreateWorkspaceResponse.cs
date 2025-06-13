@@ -2,9 +2,9 @@
 
 namespace Colabs.ProjectManagement.IntegrationTests.Infrastructure.Storage.Features.Workspaces
 {
-    public class WorkspaceResponse : BaseResponse
+    public class CreateWorkspaceResponse : BaseResponse
     {
-        public WorkspaceResponse() : base()
+        public CreateWorkspaceResponse() : base()
         {
             
         }

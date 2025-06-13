@@ -22,5 +22,24 @@ namespace Colabs.ProjectManagement.Application.Mappings
                 CanReadDocs = true
             };
         }
+
+        public static Role CreateGuestRole(string workspaceId)
+        {
+            return new Role
+            {
+                RoleId = Guid.NewGuid().ToString(),
+                WorkspaceId = workspaceId,
+                Name = "Guest",
+                Description = "Guest access throughout the workspace",
+                CanManageUsers = false,
+                CanManageTasks = true,
+                CanManageSprints = true,
+                CanManageChatrooms = true,
+                CanManageDocs = true,
+                CanCreateDocs = true,
+                CanEditDocs = true,
+                CanReadDocs = true
+            };
+        }
     }
 }

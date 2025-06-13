@@ -1,6 +1,7 @@
 ﻿using Colabs.ProjectManagement.Application.Contracts.Infrastructure;
 using Colabs.ProjectManagement.Application.Contracts.Persistence;
 using Colabs.ProjectManagement.Application.Features.Workspaces.Commands.UploadWorkpsaceProfilePicture;
+using Colabs.ProjectManagement.Application.Features.Workspaces.Commands.UploadWorkpspaceProfilePicture;
 using MediatR;
 using Microsoft.Extensions.Options;
 
@@ -30,6 +31,16 @@ namespace Colabs.ProjectManagement.Application.Features.Workspaces.Commands.Uplo
 
             try
             {
+                var validator = new UploadWorkspaceProfilePictureCommandValidator();
+                var validationResult = await validator.ValidateAsync(request, cancellationToken);
+
+                if (!validationResult.IsValid)
+                {
+                    response.Success = false;
+                    response.StatusCode = 400;
+                    response.Message = "Provided details are invalid to upload image to workspace";
+                    response.ValidationErrors = validationResult.Errors.Select(e => e.ErrorMessage).ToList();
+                }
                 
                 var workspace = await _workspaceRepository.GetByIdAsync(request.WorkspaceId);
                 if (workspace == null)
@@ -51,7 +62,7 @@ namespace Colabs.ProjectManagement.Application.Features.Workspaces.Commands.Uplo
                 string fileExtension = Path.GetExtension(request.File.FileName);
                 string fileName = $"workspace-{request.WorkspaceId}{fileExtension}";
                 
-                // 4. Upload the new image
+                
                 using (var stream = request.File.OpenReadStream())
                 {
                     workspace.ProfileUrl = await _blobStorageService.UploadAsync(
@@ -60,11 +71,9 @@ namespace Colabs.ProjectManagement.Application.Features.Workspaces.Commands.Uplo
                         request.File.ContentType, 
                         _blobStorageSettings.ProfileImageContainer);
                 }
-
-                // 5. Update the workspace
+                
                 await _workspaceRepository.UpdateAsync(workspace);
-
-                // 6. Prepare the response
+                
                 response.Success = true;
                 response.Message = "Profile picture uploaded successfully";
                 

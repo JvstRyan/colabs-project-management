@@ -1,7 +1,12 @@
-﻿namespace Colabs.ProjectManagement.Application.Features.Auth.Commands.UploadUserAvatar
+﻿using Colabs.ProjectManagement.Application.Responses;
+
+namespace Colabs.ProjectManagement.Application.Features.Auth.Commands.UploadUserAvatar
 {
-    public class UploadUserAvatarCommandResponse
+    public class UploadUserAvatarCommandResponse : BaseResponse
     {
-        
+        public UploadUserAvatarCommandResponse() : base()
+        {
+            
+        }
     }
 }

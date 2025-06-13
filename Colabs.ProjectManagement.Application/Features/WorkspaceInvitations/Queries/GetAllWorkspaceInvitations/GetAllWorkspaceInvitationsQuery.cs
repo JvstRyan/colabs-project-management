@@ -1,7 +1,8 @@
-﻿namespace Colabs.ProjectManagement.Application.Features.WorkspaceInvitations.Queries.GetAllWorkspaceInvitations
+﻿using MediatR;
+
+namespace Colabs.ProjectManagement.Application.Features.WorkspaceInvitations.Queries.GetAllWorkspaceInvitations
 {
-    public class GetAllWorkspaceInvitationsQuery
+    public class GetAllWorkspaceInvitationsQuery : IRequest<GetAllWorkspaceInvitationsQueryResponse>
     {
-        
     }
 }

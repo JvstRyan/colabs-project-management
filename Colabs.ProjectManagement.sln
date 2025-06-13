@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Colabs.ProjectManagement.In
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Colabs.ProjectManagement.Application.UnitTests", "Colabs.ProjectManagement.Application.UnitTests\Colabs.ProjectManagement.Application.UnitTests.csproj", "{28F3F6EC-FD5E-4C0C-9983-50D9D2C3C008}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Colabs.ProjectManagement.IntegrationTests", "Colabs.ProjectManagement.IntegrationTests\Colabs.ProjectManagement.IntegrationTests.csproj", "{503FBFD6-D67B-42A9-9F90-548C78F640A2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{28F3F6EC-FD5E-4C0C-9983-50D9D2C3C008}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28F3F6EC-FD5E-4C0C-9983-50D9D2C3C008}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28F3F6EC-FD5E-4C0C-9983-50D9D2C3C008}.Release|Any CPU.Build.0 = Release|Any CPU
+		{503FBFD6-D67B-42A9-9F90-548C78F640A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{503FBFD6-D67B-42A9-9F90-548C78F640A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{503FBFD6-D67B-42A9-9F90-548C78F640A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{503FBFD6-D67B-42A9-9F90-548C78F640A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -72,6 +78,7 @@ Global
 		{032B3385-AF30-4C81-AD1D-F0C845F881A5} = {D11C4AAA-5BDA-4699-852A-A53BD93ED1E5}
 		{3B5BA4D9-BBB0-45F9-9276-5D7B8B3B102E} = {D11C4AAA-5BDA-4699-852A-A53BD93ED1E5}
 		{28F3F6EC-FD5E-4C0C-9983-50D9D2C3C008} = {89A9F082-689D-4E03-AE74-89B0BEB37DE3}
+		{503FBFD6-D67B-42A9-9F90-548C78F640A2} = {89A9F082-689D-4E03-AE74-89B0BEB37DE3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E3470B9E-53FF-4595-805B-1F2B1B751727}

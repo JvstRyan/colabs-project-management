@@ -3,9 +3,9 @@ using FluentValidation;
 
 namespace Colabs.ProjectManagement.Application.Features.Auth.Commands.UploadUserAvatar
 {
-    public class UploadAvatarCommandValidator : AbstractValidator<UploadUserAvatarCommand>
+    public class UploadUserAvatarCommandValidator : AbstractValidator<UploadUserAvatarCommand>
     {
-        public UploadAvatarCommandValidator()
+        public UploadUserAvatarCommandValidator()
         {
             RuleFor(x => x.UserId)
                 .NotEmpty().WithMessage("Workspace ID is required.");
@@ -18,6 +18,6 @@ namespace Colabs.ProjectManagement.Application.Features.Auth.Commands.UploadUser
                 .When(x => x.File != null)
                 .WithMessage("Invalid image file. Only JPG, PNG, GIF, and WebP files up to 5MB are allowed.");
         }
-        }
     }
 }
+

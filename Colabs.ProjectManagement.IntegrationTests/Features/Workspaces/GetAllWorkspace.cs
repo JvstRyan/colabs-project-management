@@ -2,6 +2,8 @@
 {
     public class GetAllWorkspace
     {
-        
+        public string WorkspaceId { get; set; }
+        public string Name { get; set; }
+        public string? ProfileUrl { get; set; }
     }
 }

@@ -3,5 +3,7 @@
     public interface IBlobStorageSettings
     {
         string ProfileImageContainer { get; }
+        string BannerImageContainer { get; }
+        string UserAvatarImageContainer { get; }
     }
 }

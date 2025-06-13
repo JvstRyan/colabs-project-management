@@ -1,7 +1,9 @@
-﻿namespace Colabs.ProjectManagement.IntegrationTests.Infrastructure.Storage.Fixtures
+﻿using Colabs.ProjectManagement.IntegrationTests.Factories;
+
+namespace Colabs.ProjectManagement.IntegrationTests.Infrastructure.Storage.Fixtures
 {
-    public class DatabaseCollection
+    [CollectionDefinition("Database collection")]
+    public class DatabaseCollection : ICollectionFixture<CustomWebApplicationFactory>
     {
-        
     }
 }

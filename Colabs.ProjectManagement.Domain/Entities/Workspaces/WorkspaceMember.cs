@@ -19,3 +19,4 @@ namespace Colabs.ProjectManagement.Domain.Entities.Workspaces
         public Role Role { get; private set; } = null!;
     }
 }
+ 

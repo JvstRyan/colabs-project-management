@@ -34,9 +34,12 @@ namespace Colabs.ProjectManagement.Application.Features.Workspaces.Commands.Crea
            }
            
            var workspace = request.ToWorkspace(_currentLoggedInUser.UserId);
+           
            var adminRole = RoleMapper.CreateAdminRole(workspace.WorkspaceId);
+           var guestRole = RoleMapper.CreateGuestRole(workspace.WorkspaceId);
            
            workspace.Roles.Add(adminRole);
+           workspace.Roles.Add(guestRole);
            
            var creatorMember = workspace.ToWorkspaceMember(adminRole);
            

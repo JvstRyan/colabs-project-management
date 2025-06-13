@@ -1,5 +1,6 @@
 ﻿using Colabs.ProjectManagement.Application.Features.Auth.Commands.Login;
 using Colabs.ProjectManagement.Application.Features.Auth.Commands.Register;
+using Colabs.ProjectManagement.Application.Features.Auth.Commands.UploadUserAvatar;
 using Colabs.ProjectManagement.Application.Features.Auth.Queries.GetUserById;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -8,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Colabs.ProjectManagement.Api.Controllers
 {
     [ApiController]
-    [Route("api/users/auth")]
+    [Route("api/users")]
     public class UserController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -18,7 +19,7 @@ namespace Colabs.ProjectManagement.Api.Controllers
             _mediator = mediator;
         }
 
-        [HttpGet("/details/{id}", Name = "GetUserById")]
+        [HttpGet("details/{id}", Name = "GetUserById")]
         public async Task<ActionResult<GetUserByIdResponse>> GetUserById(string id)
         {
             var getUserByIdQuery = new GetUserByIdQuery() {UserId = id};
@@ -26,8 +27,21 @@ namespace Colabs.ProjectManagement.Api.Controllers
             return Ok(result);
         }
 
+        [HttpPost("{id}/user-avatar", Name = "UploadUserAvatar")]
+        public async Task<ActionResult<UploadUserAvatarCommandResponse>> UploadUserAvatar(string id, IFormFile file)
+        {
+            var uploadAvatarCommand = new UploadUserAvatarCommand()
+            {
+                UserId = id,
+                File = file
+            };
+            
+            var response = await _mediator.Send(uploadAvatarCommand);
+            return StatusCode(response.StatusCode, response);
+        }
+
         [AllowAnonymous]
-        [HttpPost("/register", Name = "RegisterUser")]
+        [HttpPost("auth/register", Name = "RegisterUser")]
         public async Task<ActionResult<RegisterUserCommandResponse>> RegisterUser(
             [FromBody] RegisterUserCommand registerUserCommand)
         {
@@ -36,7 +50,7 @@ namespace Colabs.ProjectManagement.Api.Controllers
         }
         
         [AllowAnonymous]
-        [HttpPost("/login", Name = "LoginUser")]
+        [HttpPost("auth/login", Name = "LoginUser")]
         public async Task<ActionResult<LoginUserCommandResponse>> LoginUser([FromBody] LoginUserCommand loginUserCommand)
         {
             var response = await _mediator.Send(loginUserCommand);

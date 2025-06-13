@@ -6,8 +6,6 @@ namespace Colabs.ProjectManagement.Application.Features.WorkspaceInvitations.Com
     public class CreateWorkspaceInvitationCommand : IRequest<CreateWorkspaceInvitationCommandResponse>
     {
         public string WorkspaceId {get; set;} = string.Empty;
-        public string InviterId { get; set; } = string.Empty; //User sending the request
-        public string InviteeId { get; set; } = string.Empty;
-        public InvitationStatus Status { get; set; } = InvitationStatus.Pending;
+        public string InviteeEmail { get; set; } = string.Empty; //Email of invited user
     }
 }

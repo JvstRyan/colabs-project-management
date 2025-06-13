@@ -20,7 +20,7 @@ namespace Colabs.ProjectManagement.Application.Features.Workspaces.Queries.GetAl
         public async Task<GetAllWorkspacesQueryResponse> Handle(GetAllWorkspacesQuery request, CancellationToken cancellationToken)
         {
             var userId = _currentLoggedInUser.UserId;
-            Console.WriteLine($"This is the logged user id {userId}"); 
+           
             var workspaces = await _workspaceRepository.GetWorkspacesByUserIdAsync(userId, cancellationToken);
 
             if (workspaces == null || !workspaces.Any())

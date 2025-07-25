@@ -28,8 +28,7 @@ namespace Colabs.ProjectManagement.Application.Mappings.Sprints
                 Name = request.Name,
                 Description = request.Description,
                 StartDate = request.StartDate,
-                EndDate = request.EndDate,
-                Status = request.Status
+                EndDate = request.EndDate
             };
         }
 

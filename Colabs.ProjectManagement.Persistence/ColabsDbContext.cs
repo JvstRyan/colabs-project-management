@@ -68,7 +68,7 @@ namespace Colabs.ProjectManagement.Persistence
 
                     case EntityState.Modified:
                         entry.Entity.LastModifiedDate = now;
-                        entry.Entity.LastModifiedBy = _currentLoggedInUser?.UserId;;
+                        entry.Entity.LastModifiedBy = _currentLoggedInUser?.UserId;
                         break;
                 
                 }

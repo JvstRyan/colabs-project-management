@@ -14,8 +14,6 @@ namespace Colabs.ProjectManagement.Application.Features.Sprints.Commands
                 .NotEmpty().WithMessage("{PropertyName} is required!")
                 .MaximumLength(50).WithMessage("{PropertyName} must not exceed 50 characters");
             
-            RuleFor(x => x.Status)
-                .IsInEnum().WithMessage("Invalid sprint status");
             
             When(x => x.StartDate.HasValue, () =>
             {

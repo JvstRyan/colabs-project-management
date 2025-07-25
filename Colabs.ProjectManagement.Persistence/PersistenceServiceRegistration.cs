@@ -21,6 +21,9 @@ namespace Colabs.ProjectManagement.Persistence
             services.AddScoped<IWorkspaceInvitationRepository, WorkspaceInvitationRepository>();
             services.AddScoped<IRoleRepository, RoleRepository>();
             services.AddScoped<IWorkspaceMemberRepository, WorkspaceMemberRepository>();
+            services.AddScoped<IChatRoomRepository, ChatRoomRepository>();
+            services.AddScoped<IChatMessageRepository, ChatMessageRepository>();
+            services.AddScoped<ISprintRepository, SprintRepository>();
             
             return services;
         }

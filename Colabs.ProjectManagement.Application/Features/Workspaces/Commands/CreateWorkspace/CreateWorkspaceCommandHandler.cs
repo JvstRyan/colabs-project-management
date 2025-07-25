@@ -16,6 +16,7 @@ namespace Colabs.ProjectManagement.Application.Features.Workspaces.Commands.Crea
             _workspaceRepository = workspaceRepository;
             _currentLoggedInUser = currentLoggedInUser;
         }
+        
         public async Task<CreateWorkspaceCommandResponse> Handle(CreateWorkspaceCommand request, CancellationToken cancellationToken)
         {
            var validator = new CreateWorkspaceCommandValidator();

@@ -10,6 +10,5 @@ namespace Colabs.ProjectManagement.Application.Features.Sprints.Commands
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate {get; set;}
         public string? Description {get; set;} = string.Empty;
-        public SprintStatus Status {get; set;}
     }
 }

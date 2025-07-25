@@ -18,7 +18,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Sprints\Queries\" />
     <Folder Include="Features\Workspaces\Commands\UpdateWorkspace\" />
   </ItemGroup>
 

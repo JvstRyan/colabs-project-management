@@ -1,7 +1,10 @@
 ﻿
+using Colabs.ProjectManagement.Api.Hubs;
+using Colabs.ProjectManagement.Api.Notifications;
 using Colabs.ProjectManagement.Api.Services;
 using Colabs.ProjectManagement.Application;
 using Colabs.ProjectManagement.Application.Contracts;
+using Colabs.ProjectManagement.Application.Contracts.WebSocket;
 using Colabs.ProjectManagement.Infrastructure;
 using Colabs.ProjectManagement.Persistence;
 using Microsoft.OpenApi.Models;
@@ -17,6 +20,7 @@ namespace Colabs.ProjectManagement.Api
             builder.Services.AddInfrastructureServices(builder.Configuration);
             
             builder.Services.AddScoped<ICurrentLoggedInUserService, CurrentLoggedInUserService>();
+            builder.Services.AddScoped<IChatMessageNotifier, SignalRChatMessageNotifier>();
             builder.Services.AddHttpContextAccessor();
 
             builder.Services.AddControllers();
@@ -57,9 +61,12 @@ namespace Colabs.ProjectManagement.Api
                 {
                     policy.WithOrigins("http://localhost:5174") 
                         .AllowAnyMethod()
-                        .AllowAnyHeader();
+                        .AllowAnyHeader()
+                        .AllowCredentials();
                 });
             });
+
+            builder.Services.AddSignalR();
             
             return builder.Build();
         }
@@ -79,6 +86,8 @@ namespace Colabs.ProjectManagement.Api
             
             app.UseAuthentication();
             app.UseAuthorization();
+
+            app.MapHub<ChatHub>("/hubs/chat");
 
             app.MapControllers();
 

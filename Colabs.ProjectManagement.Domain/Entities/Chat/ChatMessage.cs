@@ -18,6 +18,16 @@ namespace Colabs.ProjectManagement.Domain.Entities.Chat
         public ChatRoom ChatRoom { get; private set; } = null!;
         public User User { get; private set; } = null!;
 
+        public void SetUser(User user)
+        {
+            if (user == null || user.UserId != this.UserId)
+            {
+                throw new ArgumentException("Provided user is null or does not match the UserId.", nameof(user));
+            }
+
+            this.User = user;
+        }
+        
 
     }
 }

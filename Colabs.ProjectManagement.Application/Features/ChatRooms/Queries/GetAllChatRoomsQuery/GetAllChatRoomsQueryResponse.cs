@@ -7,10 +7,6 @@ using Colabs.ProjectManagement.Application.Responses;
 
 namespace Colabs.ProjectManagement.Application.Features.ChatRooms.Queries.GetAllChatRoomsQuery
 {
-    public class GetAllChatRoomsQueryResponse : BaseResponse
-    {
-        public GetAllChatRoomsQueryResponse(): base() { }
-
-        public IReadOnlyList<GetAllChatRoomsDto> ChatRooms { get; set; }
-    }
+    public record GetAllChatRoomsQueryResponse(IReadOnlyList<GetAllChatRoomsDto>? ChatRooms);
+    
 }

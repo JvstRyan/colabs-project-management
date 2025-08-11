@@ -28,26 +28,16 @@ namespace Colabs.ProjectManagement.Application.Features.ChatMessages.Commands.Cr
             _currentUserService = currentUserService;
             _notifier = notifier;
             _userRepository = userRepository;
-
         }
+
         public async Task<CreateChatMessageCommandResponse> Handle(CreateChatMessageCommand request, CancellationToken cancellationToken)
         {
-            var response = new CreateChatMessageCommandResponse();
-
-            // Don't forget to add validations here
-
-
             // 1. Checking if chatroom exists
 
             var chatRoom = await _chatRoomRepository.GetByIdAsync(request.ChatRoomId, cancellationToken);
 
-            if (chatRoom == null)
-            {
-                response.Success = false;
-                response.StatusCode = 404;
-                response.Message = "Chat room could not be found";
-                return response;
-            }
+            if (chatRoom is null)
+                throw new NotFoundException(nameof(chatRoom), request.ChatRoomId);
 
             // 2. Forming the ChatMessage
 
@@ -55,13 +45,8 @@ namespace Colabs.ProjectManagement.Application.Features.ChatMessages.Commands.Cr
 
             var user = await _userRepository.GetByIdAsync(userId, cancellationToken);
 
-            if (user == null)
-            {
-                response.Success = false;
-                response.StatusCode = 404;
-                response.Message = "User could not be found";
-                return response;
-            }
+            if (user is null)
+                throw new NotFoundException("User", userId);
 
             var chatMessage = new ChatMessage
             {
@@ -81,11 +66,7 @@ namespace Colabs.ProjectManagement.Application.Features.ChatMessages.Commands.Cr
 
             await _notifier.NotifyMessageCreatedAsync(chatMessage, cancellationToken);
 
-            response.Success = true;
-            response.Message = "Succesfully created chat message";
-            return response;
-
-
+            return new CreateChatMessageCommandResponse(true);
         }
     }
 }

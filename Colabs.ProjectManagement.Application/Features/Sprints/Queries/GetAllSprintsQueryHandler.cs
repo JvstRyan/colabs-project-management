@@ -1,4 +1,5 @@
 ﻿using Colabs.ProjectManagement.Application.Contracts.Persistence;
+using Colabs.ProjectManagement.Application.Exceptions;
 using Colabs.ProjectManagement.Domain.Entities.Workspaces;
 using MediatR;
 
@@ -17,49 +18,21 @@ namespace Colabs.ProjectManagement.Application.Features.Sprints.Queries
 
         public async Task<GetAllSprintsQueryResponse> Handle(GetAllSprintsQuery request, CancellationToken cancellationToken)
         {
-            var response = new GetAllSprintsQueryResponse();
+            
 
-            try
-            {
-                var validator = new GetAllSprintsQueryValidator();
-                var validationResult = await validator.ValidateAsync(request, cancellationToken);
+            // 1. Check if workspace exists
 
-                if (validationResult != null)
-                {
-                    response.Success = false;
-                    response.StatusCode = 400;
-                    response.ValidationErrors = validationResult.Errors.Select(e => e.ErrorMessage).ToList();
-                    return response;
-                }
+            var workspace = await _workspaceRepository.GetByIdAsync(request.WorkspaceId);
 
-                // 1. Check if workspace exists
+            if (workspace is null)
+                throw new NotFoundException("Workspace", request.WorkspaceId);
 
-                var workspace = await _workspaceRepository.GetByIdAsync(request.WorkspaceId);
+            // 2. Query sprints
+            var sprints = await _sprintRepository.GetAllSprintsQueryAsync(request.WorkspaceId, cancellationToken);
 
-                if (workspace == null)
-                {
-                    response.Success = false;
-                    response.StatusCode = 404;
-                    response.Message = "Workspace could not be found";
-                    return response;
-                }
 
-                // 2. Query sprints
-                var sprints = await _sprintRepository.GetAllSprintsQueryAsync(request.WorkspaceId, cancellationToken);
-
-                response.Success = true;
-                response.Message = "Successfully retrieved sprints";
-                response.Sprints = sprints;
-                return response;
-
-            }
-            catch (Exception ex)
-            {
-                response.Success = false;
-                response.StatusCode = 500;
-                response.Message = $"Something went wrong while quering sprints: {ex.Message}";
-                return response;
-            }
+            return new GetAllSprintsQueryResponse(sprints);
+     
         }
     }
 }

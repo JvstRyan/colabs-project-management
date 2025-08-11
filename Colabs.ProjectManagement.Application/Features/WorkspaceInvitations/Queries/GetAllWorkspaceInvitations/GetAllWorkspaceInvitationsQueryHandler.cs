@@ -1,8 +1,9 @@
-﻿using Colabs.ProjectManagement.Application.Contracts;
+﻿
+using Colabs.ProjectManagement.Application.Contracts;
 using Colabs.ProjectManagement.Application.Contracts.Persistence;
 using MediatR;
 
-namespace Colabs.ProjectManagement.Application.Features.WorkspaceInvitations.Queries.GetAllWorkspaceInvitations
+namespace Colabs.ProjectManagement.Application.Features.WorkspaceInvitation.Queries.GetAllWorkspaceInvitations
 {
     public class GetAllWorkspaceInvitationsQueryHandler : IRequestHandler<GetAllWorkspaceInvitationsQuery, GetAllWorkspaceInvitationsQueryResponse>
     {
@@ -17,44 +18,27 @@ namespace Colabs.ProjectManagement.Application.Features.WorkspaceInvitations.Que
 
         public async Task<GetAllWorkspaceInvitationsQueryResponse> Handle(GetAllWorkspaceInvitationsQuery request, CancellationToken cancellationToken)
         {
-           var response = new GetAllWorkspaceInvitationsQueryResponse();
+            // 1 Gather userId of user requesting for invitations
+            var userId =  _loggedInUser.UserId;
 
-           try
-           {
-               // 1 Gather userId of user requesting for invitations
-               var userId =  _loggedInUser.UserId;
-               
-               // 2 Query database for invitations containing 
-               var workspaceInvitations = await _workspaceInvitationRepository.GetWorkspaceInvitationsByUserId(userId, cancellationToken);
-               
-               // 3 Continue with logic if value is not null
-               if (workspaceInvitations != null)
-               {
-                   var invitationDtos = workspaceInvitations.Select(x => new GetAllWorkspaceInvitationsDto
-                   {
-                       WorkspaceInvitationId = x.WorkspaceInvitationId,
-                       InviterUsername = x.Inviter.Username,
-                       WorkspaceName = x.Workspace.Name,
-                       WorkspaceProfileUrl = x.Workspace.ProfileUrl
-                   }).ToList();
-                   
-                   response.Success = true;
-                   response.Message = "WorkspaceInvitations retrieved successfully";
-                   response.Invitations = invitationDtos;
-                   return response;
-               }
-              
-               response.Success = true;
-               response.Message = "No workspace invitations were found";
-               return response;
-           }
-           catch (Exception ex)
-           {
-               response.Success = false;
-               response.Message = $"Something went wrong while trying to retrieve workspace invitations: {ex.Message}";
-               response.StatusCode = 500;
-               return response;
-           }
+            // 2. Query database for invitations containing 
+            var workspaceInvitations = await _workspaceInvitationRepository.GetWorkspaceInvitationsByUserId(userId, cancellationToken);
+
+            // 3. Check if there are invitations
+
+            if (workspaceInvitations is null)
+                return new GetAllWorkspaceInvitationsQueryResponse(new List<GetAllWorkspaceInvitationsDto>());
+
+            var invitationDtos = workspaceInvitations.Select(x => new GetAllWorkspaceInvitationsDto
+            {
+               WorkspaceInvitationId = x.WorkspaceInvitationId,
+               InviterUsername = x.Inviter.Username,
+               WorkspaceName = x.Workspace.Name,
+               WorkspaceProfileUrl = x.Workspace.ProfileUrl
+            }).ToList();
+
+            return new GetAllWorkspaceInvitationsQueryResponse(invitationDtos);
+
         }
     }
 }

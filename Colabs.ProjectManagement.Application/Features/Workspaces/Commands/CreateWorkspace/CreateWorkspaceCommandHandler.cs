@@ -19,20 +19,6 @@ namespace Colabs.ProjectManagement.Application.Features.Workspaces.Commands.Crea
         
         public async Task<CreateWorkspaceCommandResponse> Handle(CreateWorkspaceCommand request, CancellationToken cancellationToken)
         {
-           var validator = new CreateWorkspaceCommandValidator();
-           var validationResult = await validator.ValidateAsync(request, cancellationToken);
-
-           if (!validationResult.IsValid)
-           {
-               return new CreateWorkspaceCommandResponse
-               {
-                   Success = false,
-                   StatusCode = 400,
-                   Message = "Provided details are invalid for workspace creation",
-                   ValidationErrors = validationResult.Errors.Select(e => e.ErrorMessage).ToList()
-                   
-               };
-           }
            
            var workspace = request.ToWorkspace(_currentLoggedInUser.UserId);
            
@@ -47,8 +33,8 @@ namespace Colabs.ProjectManagement.Application.Features.Workspaces.Commands.Crea
            workspace.Members.Add(creatorMember);
            
            await _workspaceRepository.AddAsync(workspace, cancellationToken);
-           
-           return workspace.ToCreateWorkspaceCommandResponse();
+
+           return new CreateWorkspaceCommandResponse(true);
         }
     }
 }

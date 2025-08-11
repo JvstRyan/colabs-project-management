@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using System.Reflection;
+using Colabs.ProjectManagement.Application.Behaviors;
+using FluentValidation;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Colabs.ProjectManagement.Application
 {
@@ -6,8 +9,14 @@ namespace Colabs.ProjectManagement.Application
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
-            services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies
-                (AppDomain.CurrentDomain.GetAssemblies()));
+            
+            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+            
+            services.AddMediatR(cfg =>
+            {
+                cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly());
+                cfg.AddOpenBehavior(typeof(ValidationBehavior<,>));
+            });
             
             return services;
         }

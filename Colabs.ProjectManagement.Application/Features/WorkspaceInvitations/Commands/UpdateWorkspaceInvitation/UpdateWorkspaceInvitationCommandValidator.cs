@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace Colabs.ProjectManagement.Application.Features.WorkspaceInvitations.Commands.UpdateWorkspaceInvitation
+namespace Colabs.ProjectManagement.Application.Features.WorkspaceInvitation.Commands.UpdateWorkspaceInvitation
 {
     public class UpdateWorkspaceInvitationCommandValidator : AbstractValidator<UpdateWorkspaceInvitationCommand>
     {

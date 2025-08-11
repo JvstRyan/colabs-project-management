@@ -1,7 +1,7 @@
 ﻿using Colabs.ProjectManagement.Application.Contracts.Persistence;
 using FluentValidation;
 
-namespace Colabs.ProjectManagement.Application.Features.WorkspaceInvitations.Commands
+namespace Colabs.ProjectManagement.Application.Features.WorkspaceInvitation.Commands
 {
     public class CreateWorkspaceInvitationCommandValidator : AbstractValidator<CreateWorkspaceInvitationCommand>
     {

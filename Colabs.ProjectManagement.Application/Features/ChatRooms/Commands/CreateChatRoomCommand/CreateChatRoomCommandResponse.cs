@@ -7,8 +7,6 @@ using Colabs.ProjectManagement.Application.Responses;
 
 namespace Colabs.ProjectManagement.Application.Features.ChatRooms.Commands.CreateChatRoomCommand
 {
-    public class CreateChatRoomCommandResponse : BaseResponse
-    {
-        public CreateChatRoomCommandResponse(): base() { }
-    }
+    public record CreateChatRoomCommandResponse(bool IsSuccess);
+   
 }

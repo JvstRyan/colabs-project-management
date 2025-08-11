@@ -1,4 +1,4 @@
-﻿using Colabs.ProjectManagement.Application.Features.WorkspaceInvitations.Commands;
+﻿using Colabs.ProjectManagement.Application.Features.WorkspaceInvitation.Commands;
 using Colabs.ProjectManagement.Domain.Entities.Workspaces;
 using Colabs.ProjectManagement.Domain.Enums;
 

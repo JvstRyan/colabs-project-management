@@ -1,5 +1,6 @@
 ﻿
 using Colabs.ProjectManagement.Api.Hubs;
+using Colabs.ProjectManagement.Api.Middleware;
 using Colabs.ProjectManagement.Api.Notifications;
 using Colabs.ProjectManagement.Api.Services;
 using Colabs.ProjectManagement.Application;
@@ -22,6 +23,8 @@ namespace Colabs.ProjectManagement.Api
             builder.Services.AddScoped<ICurrentLoggedInUserService, CurrentLoggedInUserService>();
             builder.Services.AddScoped<IChatMessageNotifier, SignalRChatMessageNotifier>();
             builder.Services.AddHttpContextAccessor();
+            
+            builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
@@ -83,6 +86,8 @@ namespace Colabs.ProjectManagement.Api
             // app.UseHttpsRedirection();
             app.UseRouting();
             app.UseCors("AllowFrontend");
+            
+            app.UseExceptionHandler(options => { });
             
             app.UseAuthentication();
             app.UseAuthorization();

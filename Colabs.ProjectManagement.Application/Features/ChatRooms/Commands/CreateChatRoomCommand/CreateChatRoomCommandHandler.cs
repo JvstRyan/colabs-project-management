@@ -20,56 +20,25 @@ namespace Colabs.ProjectManagement.Application.Features.ChatRooms.Commands.Creat
             _chatRoomRepository = chatRoomRepository;
             _workspaceRepository = workspaceRepository;
         }
-       
+
         public async Task<CreateChatRoomCommandResponse> Handle(CreateChatRoomCommand request, CancellationToken cancellationToken)
         {
-            var response = new CreateChatRoomCommandResponse();
+            // 1. Check if workspace exists
+            var workspace = await _workspaceRepository.GetByIdAsync(request.WorkspaceId, cancellationToken);
 
-            try
+            if (workspace is null)
+                throw new NotFoundException("Workspace", request.WorkspaceId);
+
+            var chatRoom = new ChatRoom
             {
-                var validator = new CreateChatRoomCommandValidator();
-                var validationResult = await validator.ValidateAsync(request, cancellationToken);
+                ChatRoomId = Guid.NewGuid().ToString(),
+                WorkspaceId = request.WorkspaceId,
+                Name = request.Name
+            };
 
-                if (!validationResult.IsValid)
-                {
-                    response.Success = false;
-                    response.StatusCode = 400;
-                    response.ValidationErrors = validationResult.Errors.Select(x => x.ErrorMessage).ToList();
-                    return response;
-                }
+            await _chatRoomRepository.AddAsync(chatRoom, cancellationToken);
 
-                // 1. Check if workspace exists
-                var workspace = await _workspaceRepository.GetByIdAsync(request.WorkspaceId, cancellationToken);
-
-                if (workspace == null)
-                {
-                    response.Success = false;
-                    response.Message = "Workspace could not be found";
-                    response.StatusCode = 404;
-                    return response;
-                }
-
-                var chatRoom = new ChatRoom
-                {
-                    ChatRoomId = Guid.NewGuid().ToString(),
-                    WorkspaceId = request.WorkspaceId,
-                    Name = request.Name
-                };
-
-                await _chatRoomRepository.AddAsync(chatRoom, cancellationToken);
-
-                response.Success = true;
-                response.Message = "Chat room has successfully been created";
-                return response;
-                
-            }
-            catch (Exception ex)
-            {
-                response.Success = false;
-                response.StatusCode = 500;
-                response.Message = $"Something went wrong: {ex.Message} ";
-                return response;
-            }
+            return new CreateChatRoomCommandResponse(true);
         }
     }
 }

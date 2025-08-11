@@ -24,18 +24,11 @@ namespace Colabs.ProjectManagement.Application.Features.Workspaces.Queries.GetAl
             var workspaces = await _workspaceRepository.GetWorkspacesByUserIdAsync(userId, cancellationToken);
 
             if (workspaces == null || !workspaces.Any())
-            {
-                return new GetAllWorkspacesQueryResponse
-                {
-                    Success = true,
-                    StatusCode = 404,
-                    Message = "No workspaces found for the current user",
-                    Workspaces = new List<GetAllWorkspaceDto>()
-                };
-            }
+               return new GetAllWorkspacesQueryResponse(new List<GetAllWorkspaceDto>());
             
             var workspaceDtos = workspaces.ToGetAllWorkspaceDtoList();
-            return workspaceDtos.ToGetAllWorkspaces();
+            
+            return new GetAllWorkspacesQueryResponse(workspaceDtos);
         }
     }
 }

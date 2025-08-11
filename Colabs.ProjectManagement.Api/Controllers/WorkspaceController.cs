@@ -1,6 +1,6 @@
-﻿using Colabs.ProjectManagement.Application.Features.WorkspaceInvitations.Commands;
-using Colabs.ProjectManagement.Application.Features.WorkspaceInvitations.Commands.UpdateWorkspaceInvitation;
-using Colabs.ProjectManagement.Application.Features.WorkspaceInvitations.Queries.GetAllWorkspaceInvitations;
+﻿using Colabs.ProjectManagement.Application.Features.WorkspaceInvitation.Commands;
+using Colabs.ProjectManagement.Application.Features.WorkspaceInvitation.Commands.UpdateWorkspaceInvitation;
+using Colabs.ProjectManagement.Application.Features.WorkspaceInvitation.Queries.GetAllWorkspaceInvitations;
 using Colabs.ProjectManagement.Application.Features.WorkspaceMembers.Commands.CreateWorkspaceMember;
 using Colabs.ProjectManagement.Application.Features.WorkspaceMembers.Queries.GetAllWorkspaceMembers;
 using Colabs.ProjectManagement.Application.Features.Workspaces.Commands.CreateWorkspace;

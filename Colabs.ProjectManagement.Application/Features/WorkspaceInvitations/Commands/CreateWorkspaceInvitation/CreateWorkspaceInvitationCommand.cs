@@ -1,7 +1,7 @@
 ﻿using Colabs.ProjectManagement.Domain.Enums;
 using MediatR;
 
-namespace Colabs.ProjectManagement.Application.Features.WorkspaceInvitations.Commands
+namespace Colabs.ProjectManagement.Application.Features.WorkspaceInvitation.Commands
 {
     public class CreateWorkspaceInvitationCommand : IRequest<CreateWorkspaceInvitationCommandResponse>
     {

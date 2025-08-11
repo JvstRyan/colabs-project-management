@@ -2,11 +2,6 @@
 
 namespace Colabs.ProjectManagement.Application.Features.Workspaces.Commands.UploadWorkpsaceProfilePicture
 {
-    public class UploadWorkspaceProfilePictureResponse : BaseResponse
-    {
-        public UploadWorkspaceProfilePictureResponse() : base()
-        {
-            
-        }
-    }
+    public record UploadWorkspaceProfilePictureResponse(bool IsSuccess);
+   
 }

@@ -19,13 +19,14 @@ namespace Colabs.ProjectManagement.Api.Controllers
 
         [Authorize]
         [HttpPost]
-        public async Task<ActionResult<CreateSprintCommandResponse>> CreateSprint
+        public async Task<ActionResult<CreateSprintCommandResult>> CreateSprint
             ([FromRoute] string workspaceId, [FromBody] CreateSprintCommand createSprintCommand)
         {
             createSprintCommand.WorkspaceId = workspaceId;
 
-            var response = await _mediator.Send(createSprintCommand);
-            return StatusCode(response.StatusCode, response);
+            var result = await _mediator.Send(createSprintCommand);
+            
+            return CreatedAtAction(nameof(GetAllSprints), new {workspaceId}, result);
         }
 
 
@@ -36,12 +37,12 @@ namespace Colabs.ProjectManagement.Api.Controllers
             var query = new GetAllSprintsQuery() { WorkspaceId = workspaceId };
 
             var response = await _mediator.Send(query);
-            return StatusCode(response.StatusCode, response);
+            
+            return Ok(response);
+
         }
 
-      
 
-       
-      
+
     }
 }

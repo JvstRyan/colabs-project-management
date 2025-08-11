@@ -33,21 +33,6 @@ namespace Colabs.ProjectManagement.Application.Mappings
             };
         }
 
-        public static CreateWorkspaceCommandResponse
-            ToCreateWorkspaceCommandResponse(this Workspace workspace)
-        {
-            return new CreateWorkspaceCommandResponse
-            {
-                Success = true,
-                Message = "Workspace created Successfully",
-                Workspace = new CreateWorkspaceDto
-                {
-                    WorkspaceId = workspace.WorkspaceId,
-                    Name = workspace.Name
-                }
-            };
-        }
-
         public static GetAllWorkspaceDto ToGetAllWorkspaceDto(this Workspace workspace)
         {
             return new GetAllWorkspaceDto
@@ -61,16 +46,6 @@ namespace Colabs.ProjectManagement.Application.Mappings
         public static List<GetAllWorkspaceDto> ToGetAllWorkspaceDtoList(this IEnumerable<Workspace> workspaces)
         {
             return workspaces.Select(w => w.ToGetAllWorkspaceDto()).ToList();
-        }
-
-        public static GetAllWorkspacesQueryResponse ToGetAllWorkspaces(this List<GetAllWorkspaceDto> workspaces)
-        {
-            return new GetAllWorkspacesQueryResponse
-            {
-                Success = true,
-                Message = "Workspaces retrieved successfully",
-                Workspaces = workspaces
-            };
         }
     }
     

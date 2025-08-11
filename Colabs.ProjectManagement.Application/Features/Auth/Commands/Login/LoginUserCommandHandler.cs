@@ -13,46 +13,23 @@ namespace Colabs.ProjectManagement.Application.Features.Auth.Commands.Login
         public LoginUserCommandHandler(IPasswordUtils passwordUtils, IUserRepository userRepository, IJwtGenerator jwtGenerator)
         {
             _passwordUtils = passwordUtils;
-            _userRepository = userRepository; 
+            _userRepository = userRepository;
             _jwtGenerator = jwtGenerator;
         }
-        
+
         public async Task<LoginUserCommandResponse> Handle(LoginUserCommand request, CancellationToken cancellationToken)
         {
-            var validator = new ValidateLoginRequest();
-            var validationResult = await validator.ValidateAsync(request);
-
-            if (!validationResult.IsValid)
-            {
-                return new LoginUserCommandResponse
-                {
-                    Success = false,
-                    StatusCode = 400,
-                    Message = "Email or password is incorrect",
-                    ValidationErrors = validationResult.Errors.Select(e => e.ErrorMessage).ToList()
-                };
-            }
-            
             var user = await _userRepository.GetUserByEmailAsync(request.Email, cancellationToken);
-            if (user == null || !_passwordUtils.VerifyPassword(request.Password, user.PasswordHash))
-            {
-                return new LoginUserCommandResponse
-                {
-                    Success = false,
-                    StatusCode = 400,
-                    Message = "Email or password is incorrect"
-                };
-            }
-            
+
+            if (user is null)
+                throw new NotFoundException("User not found");
+
+            if (!_passwordUtils.VerifyPassword(request.Password, user.PasswordHash))
+                throw new BadRequestException("Password does not match");
+
             var token = _jwtGenerator.CreateToken(user);
-            
-            return new LoginUserCommandResponse
-            {
-                Success = true,
-                Message = "Login successful",
-                Token = token,
-                UserId = user.UserId
-            };
+
+            return new LoginUserCommandResponse(token, user.UserId);
         }
     }
 }

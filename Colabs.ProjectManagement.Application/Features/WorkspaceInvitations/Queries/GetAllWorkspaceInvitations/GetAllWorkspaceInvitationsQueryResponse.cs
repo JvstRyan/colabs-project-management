@@ -1,13 +1,6 @@
 ﻿using Colabs.ProjectManagement.Application.Responses;
 
-namespace Colabs.ProjectManagement.Application.Features.WorkspaceInvitations.Queries.GetAllWorkspaceInvitations
+namespace Colabs.ProjectManagement.Application.Features.WorkspaceInvitation.Queries.GetAllWorkspaceInvitations
 {
-    public class GetAllWorkspaceInvitationsQueryResponse : BaseResponse
-    {
-        public GetAllWorkspaceInvitationsQueryResponse() : base()
-        {
-            
-        }
-        public List<GetAllWorkspaceInvitationsDto>? Invitations {get; set;}
-    }
+  public record GetAllWorkspaceInvitationsQueryResponse(List<GetAllWorkspaceInvitationsDto>? Invitations);
 }

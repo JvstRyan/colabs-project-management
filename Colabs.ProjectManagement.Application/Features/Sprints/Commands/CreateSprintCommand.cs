@@ -3,7 +3,7 @@ using MediatR;
 
 namespace Colabs.ProjectManagement.Application.Features.Sprints.Commands
 {
-    public class CreateSprintCommand : IRequest<CreateSprintCommandResponse>
+    public class CreateSprintCommand : IRequest<CreateSprintCommandResult>
     {
         public string WorkspaceId {get; set;} = string.Empty;
         public string Name {get; set;} = string.Empty;

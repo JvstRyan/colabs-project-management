@@ -7,10 +7,6 @@ using Colabs.ProjectManagement.Application.Responses;
 
 namespace Colabs.ProjectManagement.Application.Features.ChatMessages.Commands.CreateChatMessage
 {
-    public class CreateChatMessageCommandResponse: BaseResponse
-    {
-        public CreateChatMessageCommandResponse() : base()
-        {
-        }
-    }
+    public record CreateChatMessageCommandResponse(bool IsSuccess);
+    
 }
